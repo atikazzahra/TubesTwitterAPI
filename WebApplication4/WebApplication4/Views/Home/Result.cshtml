@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Hasil Pencarian";
+}
+@using TweetSharp;
+
+<div class="container" style="width:80%; position:center; margin-top:20px;">
+    <div class="row">
+        <div style="padding-left:45px;">
+            <nav id="myScrollspy" style="margin-top:20px; position:fixed;">
+                <a href="#PDAM"><img class="formimg" src="~/Resources/iconpdam.png" style="width:50px; margin-top:10px;" /></a><br />
+                <a href="#PJU"><img class="formimg" src="~/Resources/iconpju.png" style="width:50px;margin-top:10px;" /></a><br />
+                <a href="#Dinsos"><img class="formimg" src="~/Resources/icondinasosial.png" style="width:50px; margin-top:10px;" /></a><br />
+            </nav>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <div id="PDAM" style="background-color:#6ae2b3; border-radius: 6px;">
+                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk PDAM</h1>
+                @if (@ViewBag.PDAM != null)
+                {
+                    <div class="alert alert-danger" role="alert" style="padding-left:20px;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Belum dimasukan kata kunci untuk kicauan
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PDAM</div>
+                }
+                @* Show tweets here *@
+                <div>
+                @if (ViewBag.Tweets == null)
+                {
+                    <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk PDAM</h1>
+                    IEnumerable<TwitterStatus> tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
+                    foreach (var tweet in tweets)
+                    {
+                        <div class="tweet">
+                            <div class="picture">
+                                <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                            </div>
+                            <div class="info">
+                                <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                <br />
+                                <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                    @tweet.Text
+                                </a>
+                                <div class="action">
+                                    @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                    <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                    <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                    <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                                </div>
+                            </div>
+                            <div class="clear">
+
+                            </div>
+
+                        </div>
+                    }
+                }
+
+                </div>
+            </div>
+            <div id="PJU" style="background-color:#6ae2b3; border-radius: 6px;">
+                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk PJU</h1>
+                @if (@ViewBag.PJU == null)
+                {
+                    <div class="alert alert-danger" role="alert" style="padding-left:20px;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Belum dimasukan kata kunci untuk kicauan
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PJU</div>
+                }
+                @* Show tweets here *@
+                <div>
+                    @if (ViewBag.Tweets != null)
+            {
+                IEnumerable<TwitterStatus> tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
+                foreach (var tweet in tweets)
+                {
+                            <div class="tweet">
+                                <div class="picture">
+                                    <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                                </div>
+                                <div class="info">
+                                    <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                    <br />
+                                    <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                        @tweet.Text
+                                    </a>
+                                    <div class="action">
+                                        @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                        <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                        <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                        <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                                    </div>
+                                </div>
+                                <div class="clear">
+
+                                </div>
+
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+            <div id="Dinsos" style="background-color:#6ae2b3; border-radius: 6px;">
+                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk Dinas Sosial</h1>
+                @if (@ViewBag.Dinsos == null)
+                {
+                    <div class="alert alert-danger" role="alert" style="padding-left:20px;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Belum dimasukan kata kunci untuk kicauan
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.Dinsos</div>
+                }
+                @* Show tweets here *@
+                <div>
+                    @if (ViewBag.Tweets != null)
+            {
+                IEnumerable<TwitterStatus> tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
+                foreach (var tweet in tweets)
+                {
+                            <div class="tweet">
+                                <div class="picture">
+                                    <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                                </div>
+                                <div class="info">
+                                    <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                    <br />
+                                    <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                        @tweet.Text
+                                    </a>
+                                    <div class="action">
+                                        @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                        <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                        <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                        <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                                    </div>
+                                </div>
+                                <div class="clear">
+
+                                </div>
+
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
