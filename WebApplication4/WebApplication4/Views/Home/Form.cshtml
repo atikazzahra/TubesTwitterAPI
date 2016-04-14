@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "Form pencarian";
 }
+@using TweetSharp;
+
 <center>
 <div style="width:80%;">
 <h2>@ViewBag.Title kicauan</h2>
@@ -13,10 +15,45 @@
                 <div class="form-group">                    
                         <label for="txtTwitterName">Kata kunci kicauan:</label> 
                         <input type="text" name="txtTwitterName" id="txtTwitterName"  class="form-control" />
-                        <br />
+                        <input type="submit" value="STRESS WOI" />
+                    <br />
                 </div>
             </div>
         </div>
+
+        @* Show tweets here *@
+        <div>
+            @if (ViewBag.Tweets != null)
+            {
+                IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
+                foreach (var tweet in tweets)
+                {
+                    <div class="tweet">
+                        <div class="picture">
+                            <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                        </div>
+                        <div class="info">
+                            <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                            <br />
+                            <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                @tweet.Text
+                            </a>
+                            <div class="action">
+                                @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                            </div>
+                        </div>
+                        <div class="clear">
+
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+
         <div class="row">
             <div class="col-md-4">
                     <div class="jumbotron" style="background-color:#fc4456;">
