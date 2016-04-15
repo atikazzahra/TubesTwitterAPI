@@ -1,0 +1,16 @@
+mickyyu:
+google api
+
+tikeppie:
+buat kategori 3 lagi + non kategori
+perbaiki yang play biar langsung ke home
+
+adekrimbat:
+perbaiki BM
+perbaiki kalo misalnya masukan lebih dari 1
+perbaiki kalo misalnya masukan gak ada keluaran
+perbaiki kalo misalnya masukan kategori kayak 'api air' (2 kata)
+
+kirim foto untuk author ke kepi
+
+gak kepikiran lagi.. ada ide ?

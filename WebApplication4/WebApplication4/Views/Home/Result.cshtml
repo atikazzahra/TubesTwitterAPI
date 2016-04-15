@@ -12,11 +12,46 @@
                 <a href="#Dinsos"><img class="formimg" src="~/Resources/icondinasosial.png" style="width:50px; margin-top:10px;" /></a><br />
             </nav>
         </div>
+
+        @* Show tweets here *@
+        <div>
+            @if (ViewBag.Tweets != null)
+            {
+                IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
+                foreach (var tweet in tweets)
+                {
+                    <div class="tweet">
+                        <div class="picture">
+                            <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                        </div>
+                        <div class="info">
+                            <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                            <br />
+                            <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                @tweet.Text
+                            </a>
+                            <div class="action">
+                                @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                            </div>
+                        </div>
+                        <div class="clear">
+
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+
+
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
             <div id="PDAM" style="background-color:#6ae2b3; border-radius: 6px;">
                 <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk PDAM</h1>
-                @if (@ViewBag.PDAM != null)
+                @if (@ViewBag.PDAM == null)
                 {
                     <div class="alert alert-danger" role="alert" style="padding-left:20px;">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -27,50 +62,40 @@
                 else
                 {
                     <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PDAM</div>
-                }
-            </div>
 
-            <div class="jumbotron" style="background-color:#6ae2b3;">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label for="txtTwitterName">Kata kunci kicauan:</label>
-                        <input type="text" name="txtTwitterName" id="txtTwitterName" class="form-control" />
-                        <input type="submit" value="STRESS WOI" />
-                        <br />
-                    </div>
-                </div>
-            </div>
-            @* Show tweets here *@
-            <div>
-                @if (ViewBag.Tweets != null)
-                {
-                    IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
-                    foreach (var tweet in tweets)
+                    @* Show tweets here *@
+                    <div>
+                        @if (ViewBag.Tweets1 != null)
                     {
-                            <div class="tweet">
-                                <div class="picture">
-                                    <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
-                                </div>
-                                <div class="info">
-                                    <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
-                                    <br />
-                                    <a href="https://twitter.com/statuses/@tweet.Id" class="text">
-                                        @tweet.Text
-                                    </a>
-                                    <div class="action">
-                                        @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                        <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                        <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                        <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                    IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets1 = ViewBag.Tweets1 as IEnumerable<TwitterStatus>;
+                    foreach (var tweet in tweets1)
+                    {
+                                <div class="tweet">
+                                    <div class="picture">
+                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
-                                </div>
-                                <div class="clear">
+                                    <div class="info">
+                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <br />
+                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                            @tweet.Text
+                                        </a>
+                                        <div class="action">
+                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                                        </div>
+                                    </div>
+                                    <div class="clear">
+
+                                    </div>
 
                                 </div>
-
-                            </div>
+                            }
                         }
-                    }
+                    </div>
+                }
             </div>
 
             <div id="PJU" style="background-color:#6ae2b3; border-radius: 6px;">
@@ -86,6 +111,38 @@
                 else
                 {
                     <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PJU</div>
+                    @* Show tweets here *@
+                    <div>
+                        @if (ViewBag.Tweets2 != null)
+                {
+                    IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets2 = ViewBag.Tweets2 as IEnumerable<TwitterStatus>;
+                    foreach (var tweet in tweets2)
+                    {
+                                <div class="tweet">
+                                    <div class="picture">
+                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                                    </div>
+                                    <div class="info">
+                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <br />
+                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                            @tweet.Text
+                                        </a>
+                                        <div class="action">
+                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                                        </div>
+                                    </div>
+                                    <div class="clear">
+
+                                    </div>
+
+                                </div>
+                            }
+                        }
+                    </div>
                 }
             </div>
             <div id="Dinsos" style="background-color:#6ae2b3; border-radius: 6px;">
@@ -101,6 +158,38 @@
                 else
                 {
                     <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.Dinsos</div>
+                    @* Show tweets here *@
+                    <div>
+                        @if (ViewBag.Tweets3 != null)
+                {
+                    IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets3 = ViewBag.Tweets3 as IEnumerable<TwitterStatus>;
+                    foreach (var tweet in tweets3)
+                    {
+                                <div class="tweet">
+                                    <div class="picture">
+                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                                    </div>
+                                    <div class="info">
+                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <br />
+                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                            @tweet.Text
+                                        </a>
+                                        <div class="action">
+                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
+                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
+                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                                        </div>
+                                    </div>
+                                    <div class="clear">
+
+                                    </div>
+
+                                </div>
+                            }
+                        }
+                    </div>
                 }
             </div>
         </div>

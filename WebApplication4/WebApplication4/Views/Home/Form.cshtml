@@ -1,104 +1,66 @@
 ﻿@{
     ViewBag.Title = "Form pencarian";
 }
-@using TweetSharp;
-
 <center>
-<div style="width:80%;">
-<h2>@ViewBag.Title kicauan</h2>
-<h4>Kicauan untuk Bandung apa yang ingin kamu cari?</h4>
-@using (Html.BeginForm())
-{
-    <form>
-        <div class="jumbotron" style="background-color:#6ae2b3;">
-            <div class="form-horizontal">
-                <div class="form-group">                    
-                        <label for="txtTwitterName">Kata kunci kicauan:</label> 
-                        <input type="text" name="txtTwitterName" id="txtTwitterName"  class="form-control" />
-                        <input type="submit" value="STRESS WOI" />
-                    <br />
-                </div>
-            </div>
-        </div>
-
-        @* Show tweets here *@
-        <div>
-            @if (ViewBag.Tweets != null)
-            {
-                IEnumerable<TwitterStatus> /* TwitterStatus*/ tweets = ViewBag.Tweets as IEnumerable<TwitterStatus>;
-                foreach (var tweet in tweets)
-                {
-                    <div class="tweet">
-                        <div class="picture">
-                            <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
-                        </div>
-                        <div class="info">
-                            <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+    <div style="width:80%;">
+        <h2>@ViewBag.Title kicauan</h2>
+        <h4>Kicauan untuk Bandung apa yang ingin kamu cari?</h4>
+        @using (Html.BeginForm())
+        {
+            <form>
+                <div class="jumbotron" style="background-color:#6ae2b3;">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="txtTwitterName">Kata kunci kicauan:</label>
+                            <input type="text" name="txtTwitterName" id="txtTwitterName" class="form-control" />
                             <br />
-                            <a href="https://twitter.com/statuses/@tweet.Id" class="text">
-                                @tweet.Text
-                            </a>
-                            <div class="action">
-                                @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="jumbotron" style="background-color:#fc4456;">
+                            <div class="form-group">
+                                <center>
+                                    <img class="formimg" src="~/Resources/iconpdam.png" style="width:100px;" />
+                                    <h4 style="font-weight:500;">Kata kunci kicauan untuk PDAM:</h4>
+                                    <input type="text" name="txtboxPDAM" id="txtboxPDAM" class="form-control" />
+                                    <br />
+                                </center>
                             </div>
                         </div>
-                        <div class="clear">
-
-                        </div>
-
                     </div>
-                }
-            }
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                    <div class="jumbotron" style="background-color:#fc4456;">
-                        <div class="form-group">
+                    <div class="col-md-4">
+                        <div class="jumbotron" style="background-color:#fc4456;">
                             <center>
-                                <img class="formimg" src="~/Resources/iconpdam.png" style="width:100px;" />
-                                <h4 style="font-weight:500;">Kata kunci kicauan untuk PDAM:</h4>
-                                <input type="text" name="txtboxPDAM" id="txtboxPDAM" class="form-control" />
-                                <br />
+                                <div class="form-group">
+                                    <img class="formimg" src="~/Resources/iconpju.png" style="width:100px;" />
+                                    <h4 style="font-weight:500;">Kata kunci kicauan untuk Dinas PJU:</h4>
+                                    <input type="text" name="txtboxPJU" id="txtboxPJU" class="form-control" />
+                                    <br />
+                                </div>
                             </center>
                         </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="jumbotron" style="background-color:#fc4456;">
-                    <center>
-                        <div class="form-group">
-                            <img class="formimg" src="~/Resources/iconpju.png" style="width:100px;" />
-                            <h4 style="font-weight:500;">Kata kunci kicauan untuk Dinas PJU:</h4>
-                            <input type="text" name="txtboxPJU" id="txtboxPJU" class="form-control" />
-                            <br />
+                    </div>
+                    <div class="col-md-4">
+                        <div class="jumbotron" style="background-color:#fc4456;">
+                            <center>
+                                <div class="form-group">
+                                    <img class="formimg" src="~/Resources/icondinasosial.png" style="width:100px;" />
+                                    <h4 style="font-weight:500;">Kata kunci kicauan untuk Dinas Sosial:</h4>
+                                    <input type="text" name="txtboxDinsos" id="txtboxDinsos" class="form-control" />
+                                    <br />
+                                </div>
+                            </center>
                         </div>
-                    </center>
+                    </div>
                 </div>
-            </div>  
-            <div class="col-md-4">
-                <div class="jumbotron" style="background-color:#fc4456;">
-                    <center>
-                        <div class="form-group">
-                            <img class="formimg" src="~/Resources/icondinasosial.png" style="width:100px;" />
-                            <h4 style="font-weight:500;">Kata kunci kicauan untuk Dinas Sosial:</h4>
-                            <input type="text" name="txtboxDinsos" id="txtboxDinsos" class="form-control" />
-                            <br />
-                        </div>
-                    </center>
-                </div>
-            </div>
-        </div>
-        <center>
-            <div class="form-group">
-            <input type="submit" id ="submitform" value="Cari kicauan" class="btn btn-default" style="width: 40%;" href="~/Home/Result"/>
-            </div>
-        </center>
-</form>
-}
-</div>
+                <center>
+                    <div class="form-group">
+                        <input type="submit" id="submitform" value="Cari kicauan" class="btn btn-default" style="width: 40%;" href="~/Home/Result" />
+                    </div>
+                </center>
+            </form>
+        }
+    </div>
 </center>
-
