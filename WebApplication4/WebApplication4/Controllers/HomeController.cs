@@ -10,93 +10,114 @@ namespace WebApplication2.Controllers
     
     public class HomeController : Controller
     {
-        /*
-        static void buildTable(ref string w, ref List<int> t)
+        
+        static void buildTable(ref string keyword, ref List<int> table)
         {
             int i = 2;
             int j = 0;
-            int panjang = t.Capacity;
-            t.Add(-1);
-            t.Add(0);
+            table.Add(-1);
+            table.Add(0);
 
-            while (i < w.Length)
+            while (i < keyword.Length)
             {
-                if (w[i - 1] == w[j])
+                if (keyword[i-1] == keyword[j])
                 {
-                    t.Insert(i, j + 1);
+                    table.Insert(i, j + 1);
                     i++;
                     j++;
                 }
                 else if (j > 0)
                 {
-                    j = t[j];
+                    j = table[j];
                 }
                 else
                 {
-                    t.Insert(i, 0);
+                    table.Insert(i, 0);
                     i++;
                 }
             }
         }
 
-        static int KMP(ref string s, ref string w)
+        static int KMP(string text, string keyword)
+        // mengembalikan indeks posisi ditemukan, mengembalikan panjang text jika keyword tidak ditemukan 
         {
-            int m = 0;
-            int i = 0;
-            List<int> t = new List<int>(w.Length);
+            int i = 0; // indeks untuk teks
+            int j = 0; // indeks untuk keyword
+            List<int> table = new List<int>(keyword.Length);
 
-            buildTable(ref w, ref t);
-            while (m + i < s.Length)
+            buildTable(ref keyword, ref table);
+            while (i + j < text.Length)
             {
-                if (w[i] == s[m + i])
+                if (keyword[j] == text[i + j])
                 {
-                    i++;
-                    if (i == w.Length)
-                        return m;
+                    j++;
+                    if (j == keyword.Length)
+                        return i;
                 }
                 else
                 {
-                    m += i - t[i];
-                    if (i > 0)
-                        i = t[i];
+                    i += j - table[j];
+                    if (j > 0)
+                        j = table[j];
                 }
             }
-            return s.Length;
+            return text.Length;
         }
-        */
-        static void compute_last(ref string w, ref List<int> t)
+        
+        
+        static void compute_last(ref string keyword, ref Dictionary<int, int> lastPosition)
         {
-            for (int i = 0; i < 128; i++)
-                t.Add(0);
-            for (int i = 0; i < w.Length; i++)
-                t[w[i]] = i + 1;
-        }
-        static int BM(ref string s, ref string w)
-        {
-            List<int> t = new List<int>(128);
-            compute_last(ref w, ref t);
-
-            int n = s.Length;
-            int m = w.Length;
-            int i = 0;
-            while (i <= n - m)
+            for (int i = 0; i < keyword.Length; i++)
             {
-                int j = m - 1;
-                while ((j >= 0) && w[j] == s[i + j])
+                if (lastPosition.ContainsKey(keyword[i]))
+                {
+                    lastPosition[keyword[i]] = i + 1;
+                }
+                else
+                {
+                    lastPosition.Add(keyword[i], i + 1);
+                }
+            }
+        }
+
+        static int BM(string text, string keyword)
+        // mengembalikan indeks posisi ditemukan, mengembalikan panjang text jika keyword tidak ditemukan 
+        {
+            Dictionary<int, int> lastPosition = new Dictionary<int, int>();
+            compute_last(ref keyword, ref lastPosition);
+
+            int textLength = text.Length;
+            int keywordLength = keyword.Length;
+            int i = 0;
+
+            while (i <= textLength - keywordLength)
+            {
+                int j = keywordLength - 1;
+
+                // mundurkan indeks j selama karakter sesuai
+                while ((j >= 0) && keyword[j] == text[i + j])
                     j--;
+
+                // keyword cocok
                 if (j == -1)
                     return i;
-                else
+                else // keyword tidak cocok
                 {
-                    int mismatch = (int)s[i + j];
-                    System.Diagnostics.Debug.WriteLine("tesmis " + mismatch);
-                    if (j < t[mismatch])
-                        i++;
+                    int mismatch = (int)text[i + j];
+                    if (lastPosition.ContainsKey(mismatch))
+                    {
+                        if (j < lastPosition[mismatch])
+                            i++;
+                        else
+                            i = i + j - lastPosition[mismatch] + 1;
+                    }
                     else
-                        i = i + j - t[mismatch] + 1;
+                    {
+                        i = i + j + 1;
+                    }
                 }
             }
-            return s.Length;
+            return text.Length;
         }
         
         [HttpGet]
@@ -164,8 +185,8 @@ namespace WebApplication2.Controllers
                     keyWord = key1;
                     System.Diagnostics.Debug.WriteLine("tes " + text);
                     System.Diagnostics.Debug.WriteLine("tes " + keyWord);
-                    //posisi = KMP(ref text, ref keyWord);
-                    posisi = BM(ref text, ref keyWord);
+                    posisi = KMP(text, keyWord);
+                    //posisi = BM(text, keyWord);
                     min = posisi;
                     minIdx = 1;
 
@@ -173,8 +194,8 @@ namespace WebApplication2.Controllers
                     System.Diagnostics.Debug.WriteLine("tespos1 " + posisi);
 
                     keyWord = key2;
-                    //posisi = KMP(ref text, ref keyWord);
-                    posisi = BM(ref text, ref keyWord);
+                    posisi = KMP(text, keyWord);
+                    //posisi = BM(text, keyWord);
                     if (posisi < min)
                     {
                         min = posisi;
@@ -184,8 +205,8 @@ namespace WebApplication2.Controllers
 
 
                     keyWord = key3;
-                    //posisi = KMP(ref text, ref keyWord);
-                    posisi = BM(ref text, ref keyWord);
+                    posisi = KMP(text, keyWord);
+                    //posisi = BM(text, keyWord);
                     if (posisi < min)
                     {
                         min = posisi;
