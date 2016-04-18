@@ -171,7 +171,7 @@ namespace WebApplication2.Controllers
 
                 // IEnumerable<TwitterStatus> tweets = service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions { ScreenName = tweetSearchQuery, Count = 100, });
 
-                TwitterSearchResult hasil = service.Search(new SearchOptions { Q = tweetSearchQuery, Count = 10 });
+                TwitterSearchResult hasil = service.Search(new SearchOptions { Q = tweetSearchQuery, Count = 100 });
                 IEnumerable<TwitterStatus> tweets = hasil.Statuses;
            //     TwitterStatus tweetStat = tweets.ElementAt(1);
 
@@ -185,79 +185,112 @@ namespace WebApplication2.Controllers
                 List<TwitterStatus> tweets6 = new List<TwitterStatus>();
                 List<TwitterStatus> tweets7 = new List<TwitterStatus>();
                 int posisi = 0;
-                int min, minIdx;
+                int min, minIdx=0;
                 string text;
-                string keyWord;
+ //               string keyWord;
                 List<TwitterStatus> ltweet = tweets.ToList();
                 foreach (var tweet in ltweet)
                 {
+                    string[] words;
+                    char[] delimiterChars = { ';' };
+                    min = 9999;
                     text = tweet.Text;
-                    keyWord = key1;
+ //                   keyWord = key1;
                     System.Diagnostics.Debug.WriteLine("tes " + text);
-                    System.Diagnostics.Debug.WriteLine("tes " + keyWord);
-                    //posisi = KMP(text, keyWord);
-                    posisi = BM(text, keyWord);
-                    min = posisi;
-                    minIdx = 1;
+ //                   System.Diagnostics.Debug.WriteLine("tes " + keyWord);
+                    
 
+                    
+                    words = key1.Split(delimiterChars);
+
+                    foreach (string keyWord in words)
+                    {
+                        //posisi = KMP(text, keyWord);
+                        posisi = BM(text, keyWord);
+                        if (posisi < min)
+                        {
+                            min = posisi;
+                            minIdx = 1;
+                        }
+                    }
 
                     System.Diagnostics.Debug.WriteLine("tespos1 " + posisi);
 
-                    keyWord = key2;
-                    //posisi = KMP(text, keyWord);
-                    posisi = BM(text, keyWord);
-                    if (posisi < min)
+                    words = key2.Split(delimiterChars);
+
+                    foreach (string keyWord in words)
                     {
-                        min = posisi;
-                        minIdx = 2;
+                        //posisi = KMP(text, keyWord);
+                        posisi = BM(text, keyWord);
+                        if (posisi < min)
+                        {
+                            min = posisi;
+                            minIdx = 2;
+                        }
                     }
                     System.Diagnostics.Debug.WriteLine("tespos2 " + posisi);
 
 
-                    keyWord = key3;
-                    //posisi = KMP(text, keyWord);
-                    posisi = BM(text, keyWord);
-                    if (posisi < min)
+                    words = key3.Split(delimiterChars);
+
+                    foreach (string keyWord in words)
                     {
-                        min = posisi;
-                        minIdx = 3;
+                        //posisi = KMP(text, keyWord);
+                        posisi = BM(text, keyWord);
+                        if (posisi < min)
+                        {
+                            min = posisi;
+                            minIdx = 3;
+                        }
                     }
                     System.Diagnostics.Debug.WriteLine("tespos3 " + posisi);
 
-                    
-                    keyWord = key4;
-                    //posisi = KMP(text, keyWord);
-                    posisi = BM(text, keyWord);
-                    if (posisi < min)
+
+                    words = key4.Split(delimiterChars);
+
+                    foreach (string keyWord in words)
                     {
-                        min = posisi;
-                        minIdx = 4;
+                        //posisi = KMP(text, keyWord);
+                        posisi = BM(text, keyWord);
+                        if (posisi < min)
+                        {
+                            min = posisi;
+                            minIdx = 4;
+                        }
                     }
 
-                    
-                    keyWord = key5;
-                    //posisi = KMP(text, keyWord);
-                    posisi = BM(text, keyWord);
-                    if (posisi < min)
+
+                    words = key5.Split(delimiterChars);
+
+                    foreach (string keyWord in words)
                     {
-                        min = posisi;
-                        minIdx = 5;
+                        //posisi = KMP(text, keyWord);
+                        posisi = BM(text, keyWord);
+                        if (posisi < min)
+                        {
+                            min = posisi;
+                            minIdx = 5;
+                        }
                     }
 
-                    
-                    keyWord = key6;
-                    //posisi = KMP(text, keyWord);
-                    posisi = BM(text, keyWord);
+
+                    words = key6.Split(delimiterChars);
+
+                    foreach (string keyWord in words)
+                    {
+                        //posisi = KMP(text, keyWord);
+                        posisi = BM(text, keyWord);
+                        if (posisi < min)
+                        {
+                            min = posisi;
+                            minIdx = 6;
+                        }
+                    }
                     System.Diagnostics.Debug.WriteLine("tes " + text);
-                    System.Diagnostics.Debug.WriteLine("tes " + keyWord);
-                    if (posisi < min)
-                    {
-                        System.Diagnostics.Debug.WriteLine("6:" + text);
-                        min = posisi;
-                        minIdx = 6;
-                    }
+   //                 System.Diagnostics.Debug.WriteLine("tes " + keyWord);
 
-                    System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
+
+  //                  System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
                     posisi = BM(text, "qwertyuioplkjhgfdszxcvbnm");
                     if (min == posisi)
                     {
