@@ -137,9 +137,12 @@ namespace WebApplication2.Controllers
         }
         
         [HttpPost]
-        public ActionResult Form(string txtTwitterName, string txtboxPDAM, string txtboxPJU, string txtboxDinsos)
+        public ActionResult Form(string txtTwitterName, string txtboxPDAM, string txtboxPJU, string txtboxDinsos, string txtboxDBMP, string txtboxDiskom, string txtboxPDBersih)
         {
             TempData["QueryPDAM"] = txtboxPDAM;
+            TempData["QueyDiskom"] = txtboxDiskom;
+            TempData["QueryPDBersih"] = txtboxPDBersih;
+            TempData["QueryDBMP"] = txtboxDBMP;
             TempData["QueryPJU"] = txtboxPJU;
             TempData["QueryDinsos"] = txtboxDinsos;
             TempData["Tweetsearch"] = txtTwitterName;
@@ -158,6 +161,9 @@ namespace WebApplication2.Controllers
             string key1 = (string)TempData["QueryPDAM"];
             string key2 = (string)TempData["QueryPJU"];
             string key3 = (string)TempData["QueryDinsos"];
+            string key4 = (string)TempData["QueryDBMP"];
+            string key5 = (string)TempData["QueyDiskom"];
+            string key6 = (string)TempData["QueryPDBersih"];
             if (TempData["Tweetsearch"] != null)
             {
                 var service = new TwitterService(consumerKey, consumerSecret);
@@ -174,6 +180,10 @@ namespace WebApplication2.Controllers
                 List<TwitterStatus> tweets1 = new List<TwitterStatus>();
                 List<TwitterStatus> tweets2 = new List<TwitterStatus>();
                 List<TwitterStatus> tweets3 = new List<TwitterStatus>();
+                List<TwitterStatus> tweets4 = new List<TwitterStatus>();
+                List<TwitterStatus> tweets5 = new List<TwitterStatus>();
+                List<TwitterStatus> tweets6 = new List<TwitterStatus>();
+                List<TwitterStatus> tweets7 = new List<TwitterStatus>();
                 int posisi = 0;
                 int min, minIdx;
                 string text;
@@ -185,8 +195,8 @@ namespace WebApplication2.Controllers
                     keyWord = key1;
                     System.Diagnostics.Debug.WriteLine("tes " + text);
                     System.Diagnostics.Debug.WriteLine("tes " + keyWord);
-                    posisi = KMP(text, keyWord);
-                    //posisi = BM(text, keyWord);
+                    //posisi = KMP(text, keyWord);
+                    posisi = BM(text, keyWord);
                     min = posisi;
                     minIdx = 1;
 
@@ -194,8 +204,8 @@ namespace WebApplication2.Controllers
                     System.Diagnostics.Debug.WriteLine("tespos1 " + posisi);
 
                     keyWord = key2;
-                    posisi = KMP(text, keyWord);
-                    //posisi = BM(text, keyWord);
+                    //posisi = KMP(text, keyWord);
+                    posisi = BM(text, keyWord);
                     if (posisi < min)
                     {
                         min = posisi;
@@ -205,8 +215,8 @@ namespace WebApplication2.Controllers
 
 
                     keyWord = key3;
-                    posisi = KMP(text, keyWord);
-                    //posisi = BM(text, keyWord);
+                    //posisi = KMP(text, keyWord);
+                    posisi = BM(text, keyWord);
                     if (posisi < min)
                     {
                         min = posisi;
@@ -214,36 +224,94 @@ namespace WebApplication2.Controllers
                     }
                     System.Diagnostics.Debug.WriteLine("tespos3 " + posisi);
 
+                    
+                    keyWord = key4;
+                    //posisi = KMP(text, keyWord);
+                    posisi = BM(text, keyWord);
+                    if (posisi < min)
+                    {
+                        min = posisi;
+                        minIdx = 4;
+                    }
+
+                    
+                    keyWord = key5;
+                    //posisi = KMP(text, keyWord);
+                    posisi = BM(text, keyWord);
+                    if (posisi < min)
+                    {
+                        min = posisi;
+                        minIdx = 5;
+                    }
+
+                    
+                    keyWord = key6;
+                    //posisi = KMP(text, keyWord);
+                    posisi = BM(text, keyWord);
+                    System.Diagnostics.Debug.WriteLine("tes " + text);
+                    System.Diagnostics.Debug.WriteLine("tes " + keyWord);
+                    if (posisi < min)
+                    {
+                        System.Diagnostics.Debug.WriteLine("6:" + text);
+                        min = posisi;
+                        minIdx = 6;
+                    }
+
+                    System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
+                    posisi = BM(text, "qwertyuioplkjhgfdszxcvbnm");
+                    if (min == posisi)
+                    {
+                        System.Diagnostics.Debug.WriteLine("masukloh:" + text);
+                        minIdx = 7;
+                    } 
+
                     if (minIdx == 1)
                     {
                         tweets1.Add(tweet);
-                        //TwitterStatus tweetStatusss = tweet;
-                        //tweets1 = hasil.Statuses;
-                        //TwitterStatus tweetStat1 = tweets.ElementAt(1);
                     }
                     else if (minIdx == 2)
                     {
                         tweets2.Add(tweet);
-                        //tweets2 = hasil.Statuses;
-                        //TwitterStatus tweetStat2 = tweets2.ElementAt(1);
                     }
                     else if (minIdx == 3)
                     {
                         tweets3.Add(tweet);
-                        //tweets3 = hasil.Statuses;
-                        //TwitterStatus tweetStat3 = tweets3.ElementAt(1);
+                    }
+                    else if (minIdx == 4)
+                    {
+                        tweets4.Add(tweet);
+                    }
+                    else if (minIdx == 5)
+                    {
+                        tweets5.Add(tweet);
+                    }
+                    else if (minIdx == 6)
+                    {
+                        System.Diagnostics.Debug.WriteLine("6:"+text);
+                        tweets6.Add(tweet);
+                    }
+                    else
+                    {
+                        tweets7.Add(tweet);
                     }
                 }
 
                 ViewBag.Tweets1 = tweets1;
                 ViewBag.Tweets2 = tweets2;
                 ViewBag.Tweets3 = tweets3;
+                ViewBag.Tweets4 = tweets4;
+                ViewBag.Tweets5 = tweets5;
+                ViewBag.Tweets6 = tweets6;
+                ViewBag.Tweets7 = tweets7;
 
             }
 
             ViewBag.PDAM = (string)TempData["QueryPDAM"];
             ViewBag.PJU = (string)TempData["QueryPJU"];
             ViewBag.Dinsos = (string)TempData["QueryDinsos"];
+            ViewBag.Diskom = (string)TempData["QueyDiskom"];
+            ViewBag.PDBersih = (string)TempData["QueryPDBersih"];
+            ViewBag.DBMP = (string)TempData["QueryDBMP"];
 
             return View();
         }
