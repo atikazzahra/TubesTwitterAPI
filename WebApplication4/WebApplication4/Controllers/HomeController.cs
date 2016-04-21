@@ -146,6 +146,11 @@ namespace WebApplication2.Controllers
             TempData["QueryPJU"] = txtboxPJU;
             TempData["QueryDinsos"] = txtboxDinsos;
             TempData["Tweetsearch"] = txtTwitterName;
+            TempData["searchingMethod"] = Request.Form["searchingMethod"];
+            if(Request.Form["searchingMethod"] != null)
+            {
+                System.Diagnostics.Debug.WriteLine("tes " +(string)TempData["searchingMethod"]);
+            }
 
             return RedirectToAction("Result");
         }

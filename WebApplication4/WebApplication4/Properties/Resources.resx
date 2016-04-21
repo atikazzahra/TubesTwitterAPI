@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icondbmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icondbmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icondinasosial" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icondinasosial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icondiskom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icondiskom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconkicau" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconkicau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,8 +136,14 @@
   <data name="iconpdam" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconpdam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconPDBersih" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconPDBersih.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconpju" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconpju.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconyanglain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconyanglain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="profile_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\profile-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

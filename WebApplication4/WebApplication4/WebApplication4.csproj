@@ -206,6 +206,10 @@
     <None Include="Resources\iconpdam.png" />
     <None Include="Resources\iconpju.png" />
     <None Include="Resources\profile-icon.png" />
+    <None Include="Resources\icondbmp.png" />
+    <None Include="Resources\icondiskom.png" />
+    <None Include="Resources\iconPDBersih.png" />
+    <None Include="Resources\iconyanglain.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
