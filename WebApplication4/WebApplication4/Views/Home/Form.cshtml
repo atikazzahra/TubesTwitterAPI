@@ -3,8 +3,8 @@
 }
 <center>
     <div style="width:80%;">
-        <h2>@ViewBag.Title kicauan</h2>
-        <h4>Kicauan untuk Bandung apa yang ingin kamu cari?</h4>
+        <h2 style=" border-bottom:dashed; width:40%; padding-bottom:10px; font-weight:600;">@ViewBag.Title kicauan</h2>
+        <h4 style="margin-bottom:20px;">Kicauan untuk Bandung apa yang ingin kamu cari?</h4>
         @using (Html.BeginForm())
         {
             <form id="form1" runat="server" method="post">
@@ -100,8 +100,7 @@
                             <label class="radio-inline">
                                 <input type="radio" name="searchingMethod" value="KMP" id="radioKMP" checked="checked">KMP
                             </label>
-                            <label class="radio-inline"> <input type="radio" name="searchingMethod" value="BM" id="radioBM" checked="checked" />BM</label>
-                            <br />
+                            <label class="radio-inline"> <input type="radio" name="searchingMethod" value="BM" id="radioBM" />BM</label>
                         </div>
                         <input type="submit" id="submitform" value="Cari kicauan" class="btn btn-default" style="width: 40%;" href="~/Home/Result" />
                     </div>
