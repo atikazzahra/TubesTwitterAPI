@@ -1,13 +1,37 @@
 ﻿@{
     ViewBag.Title = "Form pencarian";
 }
+@section JavaScript {
+<script type="text/javascript">
+    $(window).load(function () {
+            $(document).ready(function () {
+                $('#myform').keyup(function () {
+
+                    var empty = false;
+                    $('input').each(function () {
+                        if ($(this).val() == '') {
+                            empty = true;
+                        }
+                    });
+
+                    if (empty) {
+                        $('#submitform').attr('disabled', 'disabled');
+                    } else {
+                        $('#submitform').removeAttr('disabled');
+                    }
+                });
+            })();
+    }); 
+</script>
+    }
+
 <center>
     <div style="width:80%;">
         <h2 style=" border-bottom:dashed; width:40%; padding-bottom:10px; font-weight:600;">@ViewBag.Title kicauan</h2>
         <h4 style="margin-bottom:20px;">Kicauan untuk Bandung apa yang ingin kamu cari?</h4>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myform" }))
         {
-            <form id="form1" runat="server" method="post">
+            <form id="form1">
                 <div class="jumbotron" style="background-color:#6ae2b3;">
                     <div class="form-horizontal">
                         <div class="form-group">
@@ -102,7 +126,8 @@
                             </label>
                             <label class="radio-inline"> <input type="radio" name="searchingMethod" value="BM" id="radioBM" />BM</label>
                         </div>
-                        <input type="submit" id="submitform" value="Cari kicauan" class="btn btn-default" style="width: 40%;" href="~/Home/Result" />
+                        <input type="submit" id="submitform" value="Cari kicauan" class="btn btn-default" style="width: 40%;" href="~/Home/Result"
+                               disabled="disabled" />
                     </div>
                 </center>
             </form>

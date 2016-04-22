@@ -47,6 +47,8 @@
                 clear: both;
             }
     </style>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("JavaScript", required: false)
 </head>
 <body>
     <center>
@@ -73,7 +75,7 @@
             </center>
         </div>
 
-        @Scripts.Render("~/bundles/jquery")
+        
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
     
