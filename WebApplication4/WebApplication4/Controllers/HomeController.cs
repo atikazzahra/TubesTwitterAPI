@@ -161,8 +161,9 @@ namespace WebApplication2.Controllers
             string consumerSecret = "GxJYqCJTcJyteeqSDg0sXC3xRxe4ydbbSljbSxfUvv7Z9TiROq";
             string accessToken = "2535482743-roYx8Hbx0qqdluKQFeIQlVOKvmp5IVUXaO5z9b3";
             string accessTokenSecret = "OGuX0xXjB9BiEw1K3Htgpm2LbeRUsh2EqBRf3k7TXi4VT";
-
+            
             string tweetSearchQuery = (string)TempData["Tweetsearch"];
+            string searchMethod = (string)TempData["searchingMethod"];
             string key1 = (string)TempData["QueryPDAM"];
             string key2 = (string)TempData["QueryPJU"];
             string key3 = (string)TempData["QueryDinsos"];
@@ -210,8 +211,15 @@ namespace WebApplication2.Controllers
 
                     foreach (string keyWord in words)
                     {
-                        //posisi = KMP(text, keyWord);
-                        posisi = BM(text, keyWord);
+                        if(searchMethod == "KMP")
+                        {
+                            posisi = KMP(text, keyWord);
+                        }
+                        else
+                        {
+                            posisi = BM(text, keyWord);
+                        }
+                        
                         if (posisi < min)
                         {
                             min = posisi;
@@ -225,8 +233,14 @@ namespace WebApplication2.Controllers
 
                     foreach (string keyWord in words)
                     {
-                        //posisi = KMP(text, keyWord);
-                        posisi = BM(text, keyWord);
+                        if (searchMethod == "KMP")
+                        {
+                            posisi = KMP(text, keyWord);
+                        }
+                        else
+                        {
+                            posisi = BM(text, keyWord);
+                        }
                         if (posisi < min)
                         {
                             min = posisi;
@@ -240,8 +254,14 @@ namespace WebApplication2.Controllers
 
                     foreach (string keyWord in words)
                     {
-                        //posisi = KMP(text, keyWord);
-                        posisi = BM(text, keyWord);
+                        if (searchMethod == "KMP")
+                        {
+                            posisi = KMP(text, keyWord);
+                        }
+                        else
+                        {
+                            posisi = BM(text, keyWord);
+                        }
                         if (posisi < min)
                         {
                             min = posisi;
@@ -255,8 +275,14 @@ namespace WebApplication2.Controllers
 
                     foreach (string keyWord in words)
                     {
-                        //posisi = KMP(text, keyWord);
-                        posisi = BM(text, keyWord);
+                        if (searchMethod == "KMP")
+                        {
+                            posisi = KMP(text, keyWord);
+                        }
+                        else
+                        {
+                            posisi = BM(text, keyWord);
+                        }
                         if (posisi < min)
                         {
                             min = posisi;
@@ -269,8 +295,14 @@ namespace WebApplication2.Controllers
 
                     foreach (string keyWord in words)
                     {
-                        //posisi = KMP(text, keyWord);
-                        posisi = BM(text, keyWord);
+                        if (searchMethod == "KMP")
+                        {
+                            posisi = KMP(text, keyWord);
+                        }
+                        else
+                        {
+                            posisi = BM(text, keyWord);
+                        }
                         if (posisi < min)
                         {
                             min = posisi;
@@ -283,8 +315,14 @@ namespace WebApplication2.Controllers
 
                     foreach (string keyWord in words)
                     {
-                        //posisi = KMP(text, keyWord);
-                        posisi = BM(text, keyWord);
+                        if (searchMethod == "KMP")
+                        {
+                            posisi = KMP(text, keyWord);
+                        }
+                        else
+                        {
+                            posisi = BM(text, keyWord);
+                        }
                         if (posisi < min)
                         {
                             min = posisi;
@@ -292,11 +330,19 @@ namespace WebApplication2.Controllers
                         }
                     }
                     System.Diagnostics.Debug.WriteLine("tes " + text);
-   //                 System.Diagnostics.Debug.WriteLine("tes " + keyWord);
+                    //                 System.Diagnostics.Debug.WriteLine("tes " + keyWord);
 
 
-  //                  System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
-                    posisi = BM(text, "qwertyuioplkjhgfdszxcvbnm");
+                    //                  System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
+                    if (searchMethod == "KMP")
+                    {
+                        posisi = KMP(text, "qwertyuioplkjhgfdszxcvbnm");
+                    }
+                    else
+                    {
+                        posisi = BM(text, "qwertyuioplkjhgfdszxcvbnm");
+                    }
+                    
                     if (min == posisi)
                     {
                         System.Diagnostics.Debug.WriteLine("masukloh:" + text);
