@@ -1,6 +1,6 @@
 google map api (micky)
-laporan (sisa micky)
-twitter api search banyak (micky)
+laporan (micky)
+twitter api search banyak (micky) <----- ini baru ingat
 video (kepi)
 
 debugging (ade)
