@@ -207,126 +207,221 @@ namespace WebApplication2.Controllers
                     
 
                     
-                    words = key1.Split(delimiterChars);
+                    words = key1.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string keyWord in words)
+                    foreach (string phrase in words)
                     {
-                        if(searchMethod == "KMP")
+                        int minTemp = min;
+                        int minIdxTemp = minIdx;
+                        string[] _words;
+                        _words = phrase.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string keyWord in _words)
                         {
-                            posisi = KMP(text, keyWord);
-                        }
-                        else
-                        {
-                            posisi = BM(text, keyWord);
-                        }
-                        
-                        if (posisi < min)
-                        {
-                            min = posisi;
-                            minIdx = 1;
+                            if (searchMethod == "KMP")
+                            {
+                                posisi = KMP(text.ToLower(), keyWord.ToLower());
+                            }
+                            else
+                            {
+                                posisi = BM(text.ToLower(), keyWord.ToLower());
+                            }
+
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 1;
+                                continue;
+                            }
+                            if (posisi == text.Length)
+                            {
+                                min = minTemp;
+                                minIdx = minIdxTemp;
+                                break;
+                            }
                         }
                     }
 
                     System.Diagnostics.Debug.WriteLine("tespos1 " + posisi);
 
-                    words = key2.Split(delimiterChars);
+                    words = key2.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string keyWord in words)
+                    foreach (string phrase in words)
                     {
-                        if (searchMethod == "KMP")
+                        int minTemp = min;
+                        int minIdxTemp = minIdx;
+                        string[] _words;
+                        _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string keyWord in _words)
                         {
-                            posisi = KMP(text, keyWord);
-                        }
-                        else
-                        {
-                            posisi = BM(text, keyWord);
-                        }
-                        if (posisi < min)
-                        {
-                            min = posisi;
-                            minIdx = 2;
+                            if (searchMethod == "KMP")
+                            {
+                                posisi = KMP(text.ToLower(), keyWord.ToLower());
+                            }
+                            else
+                            {
+                                posisi = BM(text.ToLower(), keyWord.ToLower());
+                            }
+
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 2;
+                                continue;
+                            }
+                            if (posisi == text.Length)
+                            {
+                                min = minTemp;
+                                minIdx = minIdxTemp;
+                                break;
+                            }
                         }
                     }
                     System.Diagnostics.Debug.WriteLine("tespos2 " + posisi);
 
 
-                    words = key3.Split(delimiterChars);
+                    words = key3.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string keyWord in words)
+                    foreach (string phrase in words)
                     {
-                        if (searchMethod == "KMP")
+                        int minTemp = min;
+                        int minIdxTemp = minIdx;
+                        string[] _words;
+                        _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string keyWord in _words)
                         {
-                            posisi = KMP(text, keyWord);
-                        }
-                        else
-                        {
-                            posisi = BM(text, keyWord);
-                        }
-                        if (posisi < min)
-                        {
-                            min = posisi;
-                            minIdx = 3;
+                            if (searchMethod == "KMP")
+                            {
+                                posisi = KMP(text.ToLower(), keyWord.ToLower());
+                            }
+                            else
+                            {
+                                posisi = BM(text.ToLower(), keyWord.ToLower());
+                            }
+
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 3;
+                                continue;
+                            }
+                            if (posisi == text.Length)
+                            {
+                                min = minTemp;
+                                minIdx = minIdxTemp;
+                                break;
+                            }
                         }
                     }
                     System.Diagnostics.Debug.WriteLine("tespos3 " + posisi);
 
 
-                    words = key4.Split(delimiterChars);
+                    words = key4.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string keyWord in words)
+                    foreach (string phrase in words)
                     {
-                        if (searchMethod == "KMP")
+                        int minTemp = min;
+                        int minIdxTemp = minIdx;
+                        string[] _words;
+                        _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string keyWord in _words)
                         {
-                            posisi = KMP(text, keyWord);
-                        }
-                        else
-                        {
-                            posisi = BM(text, keyWord);
-                        }
-                        if (posisi < min)
-                        {
-                            min = posisi;
-                            minIdx = 4;
+                            if (searchMethod == "KMP")
+                            {
+                                posisi = KMP(text.ToLower(), keyWord.ToLower());
+                            }
+                            else
+                            {
+                                posisi = BM(text.ToLower(), keyWord.ToLower());
+                            }
+
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 4;
+                                continue;
+                            }
+                            if (posisi == text.Length)
+                            {
+                                min = minTemp;
+                                minIdx = minIdxTemp;
+                                break;
+                            }
                         }
                     }
 
 
-                    words = key5.Split(delimiterChars);
+                    words = key5.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string keyWord in words)
+                    foreach (string phrase in words)
                     {
-                        if (searchMethod == "KMP")
+                        int minTemp = min;
+                        int minIdxTemp = minIdx;
+                        string[] _words;
+                        _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string keyWord in _words)
                         {
-                            posisi = KMP(text, keyWord);
-                        }
-                        else
-                        {
-                            posisi = BM(text, keyWord);
-                        }
-                        if (posisi < min)
-                        {
-                            min = posisi;
-                            minIdx = 5;
+                            if (searchMethod == "KMP")
+                            {
+                                posisi = KMP(text.ToLower(), keyWord.ToLower());
+                            }
+                            else
+                            {
+                                posisi = BM(text.ToLower(), keyWord.ToLower());
+                            }
+
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 5;
+                                continue;
+                            }
+                            if (posisi == text.Length)
+                            {
+                                min = minTemp;
+                                minIdx = minIdxTemp;
+                                break;
+                            }
                         }
                     }
 
 
-                    words = key6.Split(delimiterChars);
+                    words = key6.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-                    foreach (string keyWord in words)
+                    foreach (string phrase in words)
                     {
-                        if (searchMethod == "KMP")
+                        int minTemp = min;
+                        int minIdxTemp = minIdx;
+                        string[] _words;
+                        _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string keyWord in _words)
                         {
-                            posisi = KMP(text, keyWord);
-                        }
-                        else
-                        {
-                            posisi = BM(text, keyWord);
-                        }
-                        if (posisi < min)
-                        {
-                            min = posisi;
-                            minIdx = 6;
+                            if (searchMethod == "KMP")
+                            {
+                                posisi = KMP(text.ToLower(), keyWord.ToLower());
+                            }
+                            else
+                            {
+                                posisi = BM(text.ToLower(), keyWord.ToLower());
+                            }
+
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 6;
+                                continue;
+                            }
+                            if (posisi == text.Length)
+                            {
+                                min = minTemp;
+                                minIdx = minIdxTemp;
+                                break;
+                            }
                         }
                     }
                     System.Diagnostics.Debug.WriteLine("tes " + text);
@@ -334,15 +429,7 @@ namespace WebApplication2.Controllers
 
 
                     //                  System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
-                    if (searchMethod == "KMP")
-                    {
-                        posisi = KMP(text, "qwertyuioplkjhgfdszxcvbnm");
-                    }
-                    else
-                    {
-                        posisi = BM(text, "qwertyuioplkjhgfdszxcvbnm");
-                    }
-                    
+
                     if (min == posisi)
                     {
                         System.Diagnostics.Debug.WriteLine("masukloh:" + text);
