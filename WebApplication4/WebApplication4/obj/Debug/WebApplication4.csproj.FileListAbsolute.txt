@@ -371,3 +371,5 @@ C:\Users\user\Documents\GitHub\TubesTwitterAPI\WebApplication4\WebApplication4\o
 C:\Users\user\Documents\GitHub\TubesTwitterAPI\WebApplication4\WebApplication4\obj\Debug\WebApplication4.pdb
 D:\Teknik Informatika\Tugas Semester 4\Strategi Algoritma\Tubes 3\TubesTwitterAPI\WebApplication4\WebApplication4\bin\Hammock.dll
 D:\Teknik Informatika\Tugas Semester 4\Strategi Algoritma\Tubes 3\TubesTwitterAPI\WebApplication4\WebApplication4\bin\Hammock.pdb
+C:\Users\MICKY YU\Desktop\TubesTwitterAPI\WebApplication4\WebApplication4\bin\Hammock.dll
+C:\Users\MICKY YU\Desktop\TubesTwitterAPI\WebApplication4\WebApplication4\bin\Hammock.pdb

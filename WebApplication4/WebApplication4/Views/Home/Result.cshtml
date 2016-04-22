@@ -31,7 +31,11 @@
                 }
                 else
                 {
-                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PDAM</div>
+                    <div class="alert alert-info" role="alert">
+                        Kata kunci untuk kicauan: @ViewBag.PDAM
+                        <br />
+                        Jumlah: @ViewBag.count1
+                    </div>
 
                     @* Show tweets here *@
                     <div>
@@ -45,16 +49,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">
@@ -80,7 +81,11 @@
                 }
                 else
                 {
-                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PJU</div>
+                    <div class="alert alert-info" role="alert">
+                        Kata kunci untuk kicauan: @ViewBag.PJU
+                        <br />
+                        Jumlah: @ViewBag.count2
+                    </div>
                     @* Show tweets here *@
                     <div>
                         @if (ViewBag.Tweets2 != null)
@@ -93,16 +98,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">
@@ -117,7 +119,7 @@
             </div>
 
             <div id="Dinsos" style="background-color:#6ae2b3; border-radius: 6px;">
-                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk Dinas Sosial</h1>
+                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk Dinsos</h1>
                 @if (@ViewBag.Dinsos == null)
                 {
                     <div class="alert alert-danger" role="alert" style="padding-left:20px;">
@@ -128,7 +130,11 @@
                 }
                 else
                 {
-                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.Dinsos</div>
+                    <div class="alert alert-info" role="alert">
+                        Kata kunci untuk kicauan: @ViewBag.Dinsos
+                        <br />
+                        Jumlah: @ViewBag.count3
+                    </div>
                     @* Show tweets here *@
                     <div>
                         @if (ViewBag.Tweets3 != null)
@@ -141,16 +147,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">
@@ -165,7 +168,7 @@
             </div>
 
             <div id="DBMP" style="background-color:#6ae2b3; border-radius: 6px;">
-                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk dbmp</h1>
+                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk DBMP</h1>
                 @if (@ViewBag.DBMP == null)
                 {
                     <div class="alert alert-danger" role="alert" style="padding-left:20px;">
@@ -176,7 +179,11 @@
                 }
                 else
                 {
-                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.DBMP</div>
+                    <div class="alert alert-info" role="alert">
+                        Kata kunci untuk kicauan: @ViewBag.DBMP
+                        <br />
+                        Jumlah: @ViewBag.count4
+                    </div>
                     @* Show tweets here *@
                     <div>
                         @if (ViewBag.Tweets4 != null)
@@ -189,16 +196,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">
@@ -224,7 +228,11 @@
                 }
                 else
                 {
-                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.Diskom</div>
+                    <div class="alert alert-info" role="alert">
+                        Kata kunci untuk kicauan: @ViewBag.Diskom
+                        <br />
+                        Jumlah: @ViewBag.count5
+                    </div>
                     @* Show tweets here *@
                     <div>
                         @if (ViewBag.Tweets5 != null)
@@ -237,16 +245,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">
@@ -261,7 +266,7 @@
             </div>
 
             <div id="PDBersih" style="background-color:#6ae2b3; border-radius: 6px;">
-                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk Dinas Kebersihan</h1>
+                <h1 style="padding-top:20px; padding-left:20px;">Kicauan untuk PD Kebersihan</h1>
                 @if (@ViewBag.PDBersih == null)
                 {
                     <div class="alert alert-danger" role="alert" style="padding-left:20px;">
@@ -272,7 +277,11 @@
                 }
                 else
                 {
-                    <div class="alert alert-info" role="alert">Kata kunci untuk kicauan: @ViewBag.PDBersih</div>
+                    <div class="alert alert-info" role="alert">
+                        Kata kunci untuk kicauan: @ViewBag.PDBersih
+                        <br />
+                        Jumlah: @ViewBag.count6
+                    </div>
                     @* Show tweets here *@
                     <div>
                         @if (ViewBag.Tweets6 != null)
@@ -285,16 +294,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">
@@ -320,6 +326,9 @@
                 }
                 else
                 {
+                    <div class="alert alert-info" role="alert">
+                        Jumlah: @ViewBag.count7
+                    </div>
                     @* Show tweets here *@
                     <div>
                         @if (ViewBag.Tweets7 != null)
@@ -332,16 +341,13 @@
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
                                     <div class="info">
-                                        <span>@tweet.User.Name, @tweet.User.Description - @tweet.User.Location </span>
+                                        <span>@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
                                         </a>
                                         <div class="action">
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
-                                            <a href="https://twitter.com/intent/tweet?in_reply_to=@tweet.Id" target="_blank">Reply</a> |
-                                            <a href="https://twitter.com/intent/retweet?tweet_id=@tweet.Id" target="_blank">Retweet</a> |
-                                            <a href="https://twitter.com/intent/favorite?tweet_id=@tweet.Id" target="_blank">Favorite</a>
                                         </div>
                                     </div>
                                     <div class="clear">

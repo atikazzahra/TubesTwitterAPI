@@ -170,6 +170,13 @@ namespace WebApplication2.Controllers
             string key4 = (string)TempData["QueryDBMP"];
             string key5 = (string)TempData["QueyDiskom"];
             string key6 = (string)TempData["QueryPDBersih"];
+            int count1 = 0;
+            int count2 = 0;
+            int count3 = 0;
+            int count4 = 0;
+            int count5 = 0;
+            int count6 = 0;
+            int count7 = 0;
             if (TempData["Tweetsearch"] != null)
             {
                 var service = new TwitterService(consumerKey, consumerSecret);
@@ -195,6 +202,7 @@ namespace WebApplication2.Controllers
                 string text;
  //               string keyWord;
                 List<TwitterStatus> ltweet = tweets.ToList();
+                
                 foreach (var tweet in ltweet)
                 {
                     string[] words;
@@ -439,31 +447,37 @@ namespace WebApplication2.Controllers
                     if (minIdx == 1)
                     {
                         tweets1.Add(tweet);
+                        count1++;
                     }
                     else if (minIdx == 2)
                     {
                         tweets2.Add(tweet);
+                        count2++;
                     }
                     else if (minIdx == 3)
                     {
                         tweets3.Add(tweet);
+                        count3++;
                     }
                     else if (minIdx == 4)
                     {
                         tweets4.Add(tweet);
+                        count4++;
                     }
                     else if (minIdx == 5)
                     {
                         tweets5.Add(tweet);
+                        count5++;
                     }
                     else if (minIdx == 6)
                     {
-                        System.Diagnostics.Debug.WriteLine("6:"+text);
                         tweets6.Add(tweet);
+                        count6++;
                     }
                     else
                     {
                         tweets7.Add(tweet);
+                        count7++;
                     }
                 }
 
@@ -483,6 +497,14 @@ namespace WebApplication2.Controllers
             ViewBag.Diskom = (string)TempData["QueyDiskom"];
             ViewBag.PDBersih = (string)TempData["QueryPDBersih"];
             ViewBag.DBMP = (string)TempData["QueryDBMP"];
+
+            string c1 = count1.ToString(); ViewBag.count1 = (string)c1;
+            string c2 = count2.ToString(); ViewBag.count2 = (string)c2;
+            string c3 = count3.ToString(); ViewBag.count3 = (string)c3;
+            string c4 = count4.ToString(); ViewBag.count4 = (string)c4;
+            string c5 = count5.ToString(); ViewBag.count5 = (string)c5;
+            string c6 = count6.ToString(); ViewBag.count6 = (string)c6;
+            string c7 = count7.ToString(); ViewBag.count7 = (string)c7;
 
             return View();
         }
