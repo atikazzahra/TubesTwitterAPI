@@ -5,12 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using TweetSharp;
 
-namespace WebApplication2.Controllers
+namespace WebApplication4.Controllers
 {  
-    
     public class HomeController : Controller
     {
-        
         static void buildTable(ref string keyword, ref List<int> table)
         {
             int i = 2;
@@ -63,7 +61,6 @@ namespace WebApplication2.Controllers
             }
             return text.Length;
         }
-        
         
         static void compute_last(ref string keyword, ref Dictionary<int, int> lastPosition)
         {
@@ -129,7 +126,6 @@ namespace WebApplication2.Controllers
             while (!text[itr].Equals(temp))
             {
                 itr++;
-                
             }
             itr++;
             while (!text[itr].Equals(temp))
@@ -142,7 +138,8 @@ namespace WebApplication2.Controllers
             bool found = false;
             for (int i=0; i<6; i++)
             {
-                if (s.Equals(stringTemp[i])) {
+                if (s.Equals(stringTemp[i]))
+                {
                     found = true;
                 }
             }
@@ -156,7 +153,6 @@ namespace WebApplication2.Controllers
                     itr++;
                 }
             }
-            System.Diagnostics.Debug.WriteLine(s);
             return s;
         }
 
@@ -165,16 +161,19 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult Form()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Form(string txtTwitterName, string txtboxPDAM, string txtboxPJU, string txtboxDinsos, string txtboxDBMP, string txtboxDiskom, string txtboxPDBersih)
         {
@@ -205,6 +204,7 @@ namespace WebApplication2.Controllers
             string key4 = (string)TempData["QueryDBMP"];
             string key5 = (string)TempData["QueyDiskom"];
             string key6 = (string)TempData["QueryPDBersih"];
+
             int count1 = 0;
             int count2 = 0;
             int count3 = 0;
@@ -212,13 +212,12 @@ namespace WebApplication2.Controllers
             int count5 = 0;
             int count6 = 0;
             int count7 = 0;
+
             if (TempData["Tweetsearch"] != null)
             {
                 var service = new TwitterService(consumerKey, consumerSecret);
                 service.AuthenticateWith(accessToken, accessTokenSecret);
-
-                // IEnumerable<TwitterStatus> tweets = service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions { ScreenName = tweetSearchQuery, Count = 100, });
-
+                
                 string[] tweetSQ = tweetSearchQuery.Split(';');
                 int i;
                 tweetSearchQuery = tweetSQ[0];
@@ -227,11 +226,8 @@ namespace WebApplication2.Controllers
                     tweetSearchQuery =  tweetSearchQuery + " OR " + tweetSQ[i];
                 }
 
-                System.Diagnostics.Debug.WriteLine(tweetSearchQuery);
-
                 TwitterSearchResult hasil = service.Search(new SearchOptions { Q = tweetSearchQuery, Count = 100 });
                 IEnumerable<TwitterStatus> tweets = hasil.Statuses;
-
                 ViewBag.Tweets = tweets;
                 
                 List<TwitterStatus> tweets1 = new List<TwitterStatus>();
@@ -253,7 +249,6 @@ namespace WebApplication2.Controllers
                 int posisi = 0;
                 int min, minIdx=0;
                 string text;
- //               string keyWord;
                 List<TwitterStatus> ltweet = tweets.ToList();
                 
                 foreach (var tweet in ltweet)
@@ -263,17 +258,13 @@ namespace WebApplication2.Controllers
                     text = tweet.Text;
                     min = text.Length;
                     
-
-                    
                     words = key1.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
-
                     foreach (string phrase in words)
                     {
                         int minTemp = min;
                         int minIdxTemp = minIdx;
                         string[] _words;
                         _words = phrase.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
-
                         foreach (string keyWord in _words)
                         {
                             if (searchMethod == "KMP")
@@ -284,7 +275,6 @@ namespace WebApplication2.Controllers
                             {
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
-
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
@@ -301,14 +291,12 @@ namespace WebApplication2.Controllers
                     }
 
                     words = key2.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
-
                     foreach (string phrase in words)
                     {
                         int minTemp = min;
                         int minIdxTemp = minIdx;
                         string[] _words;
                         _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
                         foreach (string keyWord in _words)
                         {
                             if (searchMethod == "KMP")
@@ -319,7 +307,6 @@ namespace WebApplication2.Controllers
                             {
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
-
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
@@ -335,16 +322,13 @@ namespace WebApplication2.Controllers
                         }
                     }
 
-
                     words = key3.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
-
                     foreach (string phrase in words)
                     {
                         int minTemp = min;
                         int minIdxTemp = minIdx;
                         string[] _words;
                         _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
                         foreach (string keyWord in _words)
                         {
                             if (searchMethod == "KMP")
@@ -355,7 +339,6 @@ namespace WebApplication2.Controllers
                             {
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
-
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
@@ -371,16 +354,13 @@ namespace WebApplication2.Controllers
                         }
                     }
 
-
                     words = key4.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
-
                     foreach (string phrase in words)
                     {
                         int minTemp = min;
                         int minIdxTemp = minIdx;
                         string[] _words;
                         _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
                         foreach (string keyWord in _words)
                         {
                             if (searchMethod == "KMP")
@@ -391,7 +371,6 @@ namespace WebApplication2.Controllers
                             {
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
-
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
@@ -407,16 +386,13 @@ namespace WebApplication2.Controllers
                         }
                     }
 
-
                     words = key5.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
-
                     foreach (string phrase in words)
                     {
                         int minTemp = min;
                         int minIdxTemp = minIdx;
                         string[] _words;
                         _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
                         foreach (string keyWord in _words)
                         {
                             if (searchMethod == "KMP")
@@ -427,7 +403,6 @@ namespace WebApplication2.Controllers
                             {
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
-
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
@@ -442,17 +417,14 @@ namespace WebApplication2.Controllers
                             }
                         }
                     }
-
-
+                    
                     words = key6.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
-
                     foreach (string phrase in words)
                     {
                         int minTemp = min;
                         int minIdxTemp = minIdx;
                         string[] _words;
                         _words = phrase.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
                         foreach (string keyWord in _words)
                         {
                             if (searchMethod == "KMP")
@@ -463,7 +435,6 @@ namespace WebApplication2.Controllers
                             {
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
-
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
@@ -478,7 +449,6 @@ namespace WebApplication2.Controllers
                             }
                         }
                     }
-                    
 
                     if (min == text.Length)
                     {
@@ -602,7 +572,6 @@ namespace WebApplication2.Controllers
                 ViewBag.location6 = location6;
                 ViewBag.location7 = location7;
             }
-
             ViewBag.PDAM = (string)TempData["QueryPDAM"];
             ViewBag.PJU = (string)TempData["QueryPJU"];
             ViewBag.Dinsos = (string)TempData["QueryDinsos"];

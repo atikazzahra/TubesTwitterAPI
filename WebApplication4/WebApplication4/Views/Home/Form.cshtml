@@ -4,26 +4,24 @@
 @section JavaScript {
 <script type="text/javascript">
     $(window).load(function () {
-            $(document).ready(function () {
-                $('#myform').keyup(function () {
-
-                    var empty = false;
-                    $('input').each(function () {
-                        if ($(this).val() == '') {
-                            empty = true;
-                        }
-                    });
-
-                    if (empty) {
-                        $('#submitform').attr('disabled', 'disabled');
-                    } else {
-                        $('#submitform').removeAttr('disabled');
+        $(document).ready(function () {
+            $('#myform').keyup(function () {
+                var empty = false;
+                $('input').each(function () {
+                    if ($(this).val() == '') {
+                        empty = true;
                     }
                 });
-            })();
+                if (empty) {
+                    $('#submitform').attr('disabled', 'disabled');
+                } else {
+                    $('#submitform').removeAttr('disabled');
+                }
+            });
+        })();
     }); 
 </script>
-    }
+}
 
 <center>
     <div style="width:80%;">
