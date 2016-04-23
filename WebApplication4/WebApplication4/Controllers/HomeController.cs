@@ -207,8 +207,8 @@ namespace WebApplication2.Controllers
                 {
                     string[] words;
                     char[] delimiterChars = { ';' };
-                    min = 9999;
                     text = tweet.Text;
+                    min = text.Length;
  //                   keyWord = key1;
                     System.Diagnostics.Debug.WriteLine("tes " + text);
  //                   System.Diagnostics.Debug.WriteLine("tes " + keyWord);
@@ -235,17 +235,17 @@ namespace WebApplication2.Controllers
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
 
-                            if (posisi < min)
-                            {
-                                min = posisi;
-                                minIdx = 1;
-                                continue;
-                            }
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
                                 minIdx = minIdxTemp;
                                 break;
+                            }
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 1;
+                                continue;
                             }
                         }
                     }
@@ -272,17 +272,17 @@ namespace WebApplication2.Controllers
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
 
-                            if (posisi < min)
-                            {
-                                min = posisi;
-                                minIdx = 2;
-                                continue;
-                            }
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
                                 minIdx = minIdxTemp;
                                 break;
+                            }
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 2;
+                                continue;
                             }
                         }
                     }
@@ -309,17 +309,17 @@ namespace WebApplication2.Controllers
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
 
-                            if (posisi < min)
-                            {
-                                min = posisi;
-                                minIdx = 3;
-                                continue;
-                            }
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
                                 minIdx = minIdxTemp;
                                 break;
+                            }
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 3;
+                                continue;
                             }
                         }
                     }
@@ -346,17 +346,17 @@ namespace WebApplication2.Controllers
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
 
-                            if (posisi < min)
-                            {
-                                min = posisi;
-                                minIdx = 4;
-                                continue;
-                            }
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
                                 minIdx = minIdxTemp;
                                 break;
+                            }
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 4;
+                                continue;
                             }
                         }
                     }
@@ -382,17 +382,17 @@ namespace WebApplication2.Controllers
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
 
-                            if (posisi < min)
-                            {
-                                min = posisi;
-                                minIdx = 5;
-                                continue;
-                            }
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
                                 minIdx = minIdxTemp;
                                 break;
+                            }
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 5;
+                                continue;
                             }
                         }
                     }
@@ -418,17 +418,17 @@ namespace WebApplication2.Controllers
                                 posisi = BM(text.ToLower(), keyWord.ToLower());
                             }
 
-                            if (posisi < min)
-                            {
-                                min = posisi;
-                                minIdx = 6;
-                                continue;
-                            }
                             if (posisi == text.Length)
                             {
                                 min = minTemp;
                                 minIdx = minIdxTemp;
                                 break;
+                            }
+                            if (posisi < min)
+                            {
+                                min = posisi;
+                                minIdx = 6;
+                                continue;
                             }
                         }
                     }
@@ -438,7 +438,7 @@ namespace WebApplication2.Controllers
 
                     //                  System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
 
-                    if (min == posisi)
+                    if (min == text.Length)
                     {
                         System.Diagnostics.Debug.WriteLine("masukloh:" + text);
                         minIdx = 7;
