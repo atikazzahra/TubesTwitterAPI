@@ -120,6 +120,46 @@ namespace WebApplication2.Controllers
             return text.Length;
         }
         
+        string getLocation(string text)
+        {
+            string s = "";
+            char temp = ' ';
+            int itr = KMP(text, " di ");
+            itr++;
+            while (!text[itr].Equals(temp))
+            {
+                itr++;
+                
+            }
+            itr++;
+            while (!text[itr].Equals(temp))
+            {
+                s = s + text[itr];
+                itr++;
+            }
+            s = s.ToLower();
+            string[] stringTemp = { "jl", "jl.", "jalan", "kelurahan", "kecamatan", "kantor" };
+            bool found = false;
+            for (int i=0; i<6; i++)
+            {
+                if (s.Equals(stringTemp[i])) {
+                    found = true;
+                }
+            }
+            if (found)
+            {
+                s = s + " ";
+                itr++;
+                while (!text[itr].Equals(temp))
+                {
+                    s = s + text[itr];
+                    itr++;
+                }
+            }
+            System.Diagnostics.Debug.WriteLine(s);
+            return s;
+        }
+
         [HttpGet]
         public ActionResult About()
         {
@@ -135,7 +175,6 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-        
         [HttpPost]
         public ActionResult Form(string txtTwitterName, string txtboxPDAM, string txtboxPJU, string txtboxDinsos, string txtboxDBMP, string txtboxDiskom, string txtboxPDBersih)
         {
@@ -188,7 +227,7 @@ namespace WebApplication2.Controllers
                     tweetSearchQuery =  tweetSearchQuery + " OR " + tweetSQ[i];
                 }
 
-                System.Diagnostics.Debug.WriteLine(tweetSearchQuery + "cinta");
+                System.Diagnostics.Debug.WriteLine(tweetSearchQuery);
 
                 TwitterSearchResult hasil = service.Search(new SearchOptions { Q = tweetSearchQuery, Count = 100 });
                 IEnumerable<TwitterStatus> tweets = hasil.Statuses;
@@ -202,6 +241,15 @@ namespace WebApplication2.Controllers
                 List<TwitterStatus> tweets5 = new List<TwitterStatus>();
                 List<TwitterStatus> tweets6 = new List<TwitterStatus>();
                 List<TwitterStatus> tweets7 = new List<TwitterStatus>();
+                
+                List<String> location1 = new List<String>();
+                List<String> location2 = new List<String>();
+                List<String> location3 = new List<String>();
+                List<String> location4 = new List<String>();
+                List<String> location5 = new List<String>();
+                List<String> location6 = new List<String>();
+                List<String> location7 = new List<String>();
+
                 int posisi = 0;
                 int min, minIdx=0;
                 string text;
@@ -430,46 +478,111 @@ namespace WebApplication2.Controllers
                             }
                         }
                     }
+                    
 
                     if (min == text.Length)
                     {
                         minIdx = 7;
-                    } 
-
+                    }
+                    
+                    string s;
                     if (minIdx == 1)
                     {
                         tweets1.Add(tweet);
                         count1++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location1.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location1.Add(s);
+                        }
                     }
                     else if (minIdx == 2)
                     {
                         tweets2.Add(tweet);
                         count2++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location2.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location2.Add(s);
+                        }
                     }
                     else if (minIdx == 3)
                     {
                         tweets3.Add(tweet);
                         count3++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location3.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location3.Add(s);
+                        }
                     }
                     else if (minIdx == 4)
                     {
                         tweets4.Add(tweet);
                         count4++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location4.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location4.Add(s);
+                        }
                     }
                     else if (minIdx == 5)
                     {
                         tweets5.Add(tweet);
                         count5++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location5.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location5.Add(s);
+                        }
                     }
                     else if (minIdx == 6)
                     {
                         tweets6.Add(tweet);
                         count6++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location6.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location6.Add(s);
+                        }
                     }
                     else
                     {
                         tweets7.Add(tweet);
                         count7++;
+                        if (KMP(text, " di ") == text.Length)
+                        {
+                            location7.Add(" ");
+                        }
+                        else
+                        {
+                            s = getLocation(text);
+                            location7.Add(s);
+                        }
                     }
                 }
 
@@ -480,7 +593,14 @@ namespace WebApplication2.Controllers
                 ViewBag.Tweets5 = tweets5;
                 ViewBag.Tweets6 = tweets6;
                 ViewBag.Tweets7 = tweets7;
-
+                
+                ViewBag.location1 = location1;
+                ViewBag.location2 = location2;
+                ViewBag.location3 = location3;
+                ViewBag.location4 = location4;
+                ViewBag.location5 = location5;
+                ViewBag.location6 = location6;
+                ViewBag.location7 = location7;
             }
 
             ViewBag.PDAM = (string)TempData["QueryPDAM"];

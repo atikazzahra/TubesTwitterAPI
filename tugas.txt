@@ -1,8 +1,0 @@
-google map api (micky)
-laporan (micky)
-twitter api search banyak (micky) <----- ini baru ingat
-video (kepi)
-
-debugging (ade)
-- tadi gua liat search nya salah... 
-- contoh gua taro sama file ini
