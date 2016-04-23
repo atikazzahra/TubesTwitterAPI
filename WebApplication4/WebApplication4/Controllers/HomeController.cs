@@ -147,10 +147,6 @@ namespace WebApplication2.Controllers
             TempData["QueryDinsos"] = txtboxDinsos;
             TempData["Tweetsearch"] = txtTwitterName;
             TempData["searchingMethod"] = Request.Form["searchingMethod"];
-            if(Request.Form["searchingMethod"] != null)
-            {
-                System.Diagnostics.Debug.WriteLine("tes " +(string)TempData["searchingMethod"]);
-            }
 
             return RedirectToAction("Result");
         }
@@ -184,9 +180,18 @@ namespace WebApplication2.Controllers
 
                 // IEnumerable<TwitterStatus> tweets = service.ListTweetsOnUserTimeline(new ListTweetsOnUserTimelineOptions { ScreenName = tweetSearchQuery, Count = 100, });
 
+                string[] tweetSQ = tweetSearchQuery.Split(';');
+                int i;
+                tweetSearchQuery = tweetSQ[0];
+                for (i = 1; i < tweetSQ.Length; i++)
+                {
+                    tweetSearchQuery =  tweetSearchQuery + " OR " + tweetSQ[i];
+                }
+
+                System.Diagnostics.Debug.WriteLine(tweetSearchQuery + "cinta");
+
                 TwitterSearchResult hasil = service.Search(new SearchOptions { Q = tweetSearchQuery, Count = 100 });
                 IEnumerable<TwitterStatus> tweets = hasil.Statuses;
-           //     TwitterStatus tweetStat = tweets.ElementAt(1);
 
                 ViewBag.Tweets = tweets;
                 
@@ -209,9 +214,6 @@ namespace WebApplication2.Controllers
                     char[] delimiterChars = { ';' };
                     text = tweet.Text;
                     min = text.Length;
- //                   keyWord = key1;
-                    System.Diagnostics.Debug.WriteLine("tes " + text);
- //                   System.Diagnostics.Debug.WriteLine("tes " + keyWord);
                     
 
                     
@@ -250,8 +252,6 @@ namespace WebApplication2.Controllers
                         }
                     }
 
-                    System.Diagnostics.Debug.WriteLine("tespos1 " + posisi);
-
                     words = key2.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string phrase in words)
@@ -286,7 +286,6 @@ namespace WebApplication2.Controllers
                             }
                         }
                     }
-                    System.Diagnostics.Debug.WriteLine("tespos2 " + posisi);
 
 
                     words = key3.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
@@ -323,7 +322,6 @@ namespace WebApplication2.Controllers
                             }
                         }
                     }
-                    System.Diagnostics.Debug.WriteLine("tespos3 " + posisi);
 
 
                     words = key4.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
@@ -432,15 +430,9 @@ namespace WebApplication2.Controllers
                             }
                         }
                     }
-                    System.Diagnostics.Debug.WriteLine("tes " + text);
-                    //                 System.Diagnostics.Debug.WriteLine("tes " + keyWord);
-
-
-                    //                  System.Diagnostics.Debug.WriteLine("minindx:" + minIdx);
 
                     if (min == text.Length)
                     {
-                        System.Diagnostics.Debug.WriteLine("masukloh:" + text);
                         minIdx = 7;
                     } 
 
