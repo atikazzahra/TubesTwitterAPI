@@ -49,38 +49,42 @@
                         foreach (var tweet in tweets1)
                             {
                                 <div class="tweet">
-                                    <div class="picture">
-                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
-                                    </div>
-                                    <div class="info">
-                                        <span>@tweet.User.Name - @tweet.User.Location </span>
-                                        <br />
-                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
-                                            @tweet.Text
-                                        </a>
-                                        <div class="action">
-                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                    <div class="row">
+                                        <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
+                                            <div class="picture">
+                                                <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <div class="info">
+                                                <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
+                                                <br />
+                                                <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                                    @tweet.Text
+                                                </a>
+                                                <div class="action">
+                                                    @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="clear">
-
                                     </div>
-
                                 </div>
-                       
-                                if (!location1[itr].Equals(" ")) {
-                                tempItr = itr.ToString();
-                                @(
-                                Html.GoogleMap()
-                                .Name(tempItr)
-                                .Height(300)
-                                .Center(c => c.Address(location1[itr] + ", Bandung, Indonesia"))
-                                .Markers(marker => marker.Add().Title(tempItr))
-                                )
-                                }
-                                itr++;
-                                
-                            }
+                                <div style="margin:5px; border-bottom:1px solid #000000;">
+                                    if (!location7[itr].Equals(" ")) {
+                                    tempItr = itr.ToString();
+                                    @(
+                                    Html.GoogleMap()
+                                    .Name(tempItr)
+                                    .Height(300)
+                                    .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
+                                    .Markers(marker => marker.Add().Title(tempItr))
+                                    )
+                                    }
+                                    itr++;
+                                    }
+                                </div>
                         }
                     </div>
                 }
@@ -113,40 +117,43 @@
                     string tempItr;
                         foreach (var tweet in tweets2)
                     {
-                                <div class="tweet">
-                                    <div class="picture">
-                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
-                                    </div>
-                                    <div class="info">
-                                        <span>@tweet.User.Name @tweet.User.Location </span>
-                                        <br />
-                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
-                                            @tweet.Text
-                                        </a>
-                                        <div class="action">
-                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                            <div class="tweet">
+                                <div class="row">
+                                    <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
+                                        <div class="picture">
+                                            <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                         </div>
                                     </div>
-                                    <div class="clear">
-
+                                    <div class="col-sm-11">
+                                        <div class="info">
+                                            <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
+                                            <br />
+                                            <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                                @tweet.Text
+                                            </a>
+                                            <div class="action">
+                                                @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </div>
-                        
-                                if (!location2[itr].Equals(" ")) {
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div style="margin:5px; border-bottom:1px solid #000000;">
+                                if (!location7[itr].Equals(" ")) {
                                 tempItr = itr.ToString();
                                 @(
                                 Html.GoogleMap()
                                 .Name(tempItr)
                                 .Height(300)
-                                .Center(c => c.Address(location2[itr] + ", Bandung, Indonesia"))
+                                .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
                                 .Markers(marker => marker.Add().Title(tempItr))
                                 )
                                 }
                                 itr++;
-                                
-                            
-                            }
+                                }
+                            </div>
                         }
                     </div>
                 }
@@ -179,12 +186,16 @@
                     string tempItr;
                         foreach (var tweet in tweets3)
                     {
-                                <div class="tweet">
+                        <div class="tweet">
+                            <div class="row">
+                                <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
                                     <div class="picture">
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
+                                </div>
+                                <div class="col-sm-11">
                                     <div class="info">
-                                        <span>@tweet.User.Name - @tweet.User.Location </span>
+                                        <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
@@ -193,23 +204,25 @@
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
                                         </div>
                                     </div>
-                                    <div class="clear">
-
-                                    </div>
-
                                 </div>
-                        if (!location3[itr].Equals(" ")) {
-                                tempItr = itr.ToString();
-                                @(
-                                Html.GoogleMap()
-                                .Name(tempItr)
-                                .Height(300)
-                                .Center(c => c.Address(location3[itr] + ", Bandung, Indonesia"))
-                                .Markers(marker => marker.Add().Title(tempItr))
-                                )
-                                }
-                                itr++;
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div style="margin:5px; border-bottom:1px solid #000000;">
+                            if (!location7[itr].Equals(" ")) {
+                            tempItr = itr.ToString();
+                            @(
+                            Html.GoogleMap()
+                            .Name(tempItr)
+                            .Height(300)
+                            .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
+                            .Markers(marker => marker.Add().Title(tempItr))
+                            )
                             }
+                            itr++;
+                            }
+                        </div>
                         }
                     </div>
                 }
@@ -242,12 +255,16 @@
                     string tempItr;
                         foreach (var tweet in tweets4)
                     {
-                                <div class="tweet">
+                        <div class="tweet">
+                            <div class="row">
+                                <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
                                     <div class="picture">
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
+                                </div>
+                                <div class="col-sm-11">
                                     <div class="info">
-                                        <span>@tweet.User.Name - @tweet.User.Location </span>
+                                        <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
@@ -256,23 +273,25 @@
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
                                         </div>
                                     </div>
-                                    <div class="clear">
-
-                                    </div>
-
                                 </div>
-                        if (!location4[itr].Equals(" ")) {
-                                tempItr = itr.ToString();
-                                @(
-                                Html.GoogleMap()
-                                .Name(tempItr)
-                                .Height(300)
-                                .Center(c => c.Address(location4[itr] + ", Bandung, Indonesia"))
-                                .Markers(marker => marker.Add().Title(tempItr))
-                                )
-                                }
-                                itr++;
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div style="margin:5px; border-bottom:1px solid #000000;">
+                            if (!location7[itr].Equals(" ")) {
+                            tempItr = itr.ToString();
+                            @(
+                            Html.GoogleMap()
+                            .Name(tempItr)
+                            .Height(300)
+                            .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
+                            .Markers(marker => marker.Add().Title(tempItr))
+                            )
                             }
+                            itr++;
+                            }
+                        </div>
                         }
                     </div>
                 }
@@ -305,12 +324,16 @@
                         string tempItr;
                         foreach (var tweet in tweets5)
                     {
-                                <div class="tweet">
+                        <div class="tweet">
+                            <div class="row">
+                                <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
                                     <div class="picture">
                                         <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                     </div>
+                                </div>
+                                <div class="col-sm-11">
                                     <div class="info">
-                                        <span>@tweet.User.Name - @tweet.User.Location </span>
+                                        <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
                                         <br />
                                         <a href="https://twitter.com/statuses/@tweet.Id" class="text">
                                             @tweet.Text
@@ -319,23 +342,25 @@
                                             @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
                                         </div>
                                     </div>
-                                    <div class="clear">
-
-                                    </div>
-
                                 </div>
-                        if (!location5[itr].Equals(" ")) {
-                                tempItr = itr.ToString();
-                                @(
-                                Html.GoogleMap()
-                                .Name(tempItr)
-                                .Height(300)
-                                .Center(c => c.Address(location5[itr] + ", Bandung, Indonesia"))
-                                .Markers(marker => marker.Add().Title(tempItr))
-                                )
-                                }
-                                itr++;
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div style="margin:5px; border-bottom:1px solid #000000;">
+                            if (!location7[itr].Equals(" ")) {
+                            tempItr = itr.ToString();
+                            @(
+                            Html.GoogleMap()
+                            .Name(tempItr)
+                            .Height(300)
+                            .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
+                            .Markers(marker => marker.Add().Title(tempItr))
+                            )
                             }
+                            itr++;
+                            }
+                        </div>
                         }
                     </div>
                 }
@@ -368,37 +393,43 @@
                     string tempItr;
                         foreach (var tweet in tweets6)
                     {
-                                <div class="tweet">
-                                    <div class="picture">
-                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
-                                    </div>
-                                    <div class="info">
-                                        <span>@tweet.User.Name - @tweet.User.Location </span>
-                                        <br />
-                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
-                                            @tweet.Text
-                                        </a>
-                                        <div class="action">
-                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                            <div class="tweet">
+                                <div class="row">
+                                    <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
+                                        <div class="picture">
+                                            <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
                                         </div>
                                     </div>
-                                    <div class="clear">
-
+                                    <div class="col-sm-11">
+                                        <div class="info">
+                                            <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
+                                            <br />
+                                            <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                                @tweet.Text
+                                            </a>
+                                            <div class="action">
+                                                @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </div>
-                        if (!location6[itr].Equals(" ")) {
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div style="margin:5px; border-bottom:1px solid #000000;">
+                                if (!location7[itr].Equals(" ")) {
                                 tempItr = itr.ToString();
                                 @(
                                 Html.GoogleMap()
                                 .Name(tempItr)
                                 .Height(300)
-                                .Center(c => c.Address(location6[itr] + ", Bandung, Indonesia"))
+                                .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
                                 .Markers(marker => marker.Add().Title(tempItr))
                                 )
                                 }
                                 itr++;
-                            }
+                                }
+                            </div>
                         }
                     </div>
                 }
@@ -430,36 +461,42 @@
                         foreach (var tweet in tweets7)
                     {
                                 <div class="tweet">
-                                    <div class="picture">
-                                        <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
-                                    </div>
-                                    <div class="info">
-                                        <span>@tweet.User.Name - @tweet.User.Location </span>
-                                        <br />
-                                        <a href="https://twitter.com/statuses/@tweet.Id" class="text">
-                                            @tweet.Text
-                                        </a>
-                                        <div class="action">
-                                            @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                    <div class="row">
+                                        <div class="col-sm-1" style="border:6px solid #ffd800; border-radius:6px;">
+                                            <div class="picture">
+                                                <img src="@tweet.User.ProfileImageUrl" alt="@tweet.User.ScreenName" title="@tweet.User.ScreenName" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <div class="info">
+                                                <span style="font-weight:600;">@tweet.User.Name - @tweet.User.Location </span>
+                                                <br />
+                                                <a href="https://twitter.com/statuses/@tweet.Id" class="text">
+                                                    @tweet.Text
+                                                </a>
+                                                <div class="action">
+                                                    @tweet.CreatedDate.AddHours(3).ToString("d/M/yyyy HH:mm:ss")
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="clear">
-
                                     </div>
-
                                 </div>
-                                if (!location7[itr].Equals(" ")) {
-                                tempItr = itr.ToString();
-                                @(
-                                Html.GoogleMap()
-                                .Name(tempItr)
-                                .Height(300)
-                                .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
-                                .Markers(marker => marker.Add().Title(tempItr))
-                                )
-                                }
-                                itr++;
-                            }
+                                <div style="margin:5px; border-bottom:1px solid #000000;">
+                                    if (!location7[itr].Equals(" ")) {
+                                    tempItr = itr.ToString();
+                                    @(
+                                    Html.GoogleMap()
+                                    .Name(tempItr)
+                                    .Height(300)
+                                    .Center(c => c.Address(location7[itr] + ", Bandung, Indonesia"))
+                                    .Markers(marker => marker.Add().Title(tempItr))
+                                    )
+                                    }
+                                    itr++;
+                                    }
+                                </div>
                         }
                     </div>
                 }
