@@ -63,6 +63,16 @@ namespace WebApplication4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blue_copy {
+            get {
+                object obj = ResourceManager.GetObject("blue_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icondbmp {
             get {
                 object obj = ResourceManager.GetObject("icondbmp", resourceCulture);
